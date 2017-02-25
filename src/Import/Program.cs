@@ -17,8 +17,8 @@ namespace Import
         {
             try
             {
-                Console.WriteLine("SID2VT Export");
-                Console.WriteLine("\r\nAre you sure you want to delete the existing data?");
+                Console.WriteLine("SID2VT Import");
+                Console.WriteLine("\r\nAre you sure you want to overwrite the existing data?");
                 bool chosen = false;
                 while (!chosen)
                 {
