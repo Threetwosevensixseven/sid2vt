@@ -20,20 +20,20 @@ namespace Export
             {
                 Console.WriteLine("SID2VT Export");
                 Console.WriteLine("\r\nCreating pattern files in:\r\n" + DIR);
-                Console.WriteLine("\r\nAre you sure you want to overwrite the existing data?");
-                bool chosen = false;
-                while (!chosen)
-                {
-                    var key = Console.ReadKey(true);
-                    if (key.Key == ConsoleKey.N) return;
-                    if (key.Key == ConsoleKey.Y) chosen = true;
-                }
+                //Console.WriteLine("\r\nAre you sure you want to overwrite the existing data?");
+                //bool chosen = false;
+                //while (!chosen)
+                //{
+                //    var key = Console.ReadKey(true);
+                //    if (key.Key == ConsoleKey.N) return;
+                //    if (key.Key == ConsoleKey.Y) chosen = true;
+                //}
                 Export();
             }
             finally
             {
-                Console.WriteLine("\r\nPress any key to exit...");
-                Console.ReadKey(true);
+                //Console.WriteLine("\r\nPress any key to exit...");
+                //Console.ReadKey(true);
             }
         }
 
@@ -44,9 +44,9 @@ namespace Export
             {
                 con.Open();
                 var sequence = Sequence.Load(con);
-                int len = 0;
                 foreach (var p in sequence.Patterns)
                 {
+                    int len = 0;
                     StringBuilder sb = new StringBuilder("[Pattern]\r\n");
                     for (int i = p.FrameStart; i <= p.FrameEnd; i++)
                     {
@@ -58,7 +58,7 @@ namespace Export
                         sb.Append(" .... ....|");
                         sb.Append((frame.NoteB ?? "---").Trim().Substring(0, 3).PadLeft(3));
                         sb.Append(" .... ....|");
-                        sb.Append((frame.NoteB ?? "---").Trim().Substring(0, 3).PadLeft(3));
+                        sb.Append((frame.NoteC ?? "---").Trim().Substring(0, 3).PadLeft(3));
                         sb.Append(" .... ....\r\n");
                     }
                     if (!Directory.Exists(DIR))

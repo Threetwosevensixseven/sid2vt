@@ -21,7 +21,7 @@ namespace Export.Classes
         {
             var seq = new Sequence();
             var pids = new List<int>();
-            string sql = "SELECT * FROM [Sequence] ORDER BY SeqID;";
+            string sql = "SELECT * FROM [Sequence] ORDER BY FrameStart,FrameEnd;";
             using (var cmd = Con.CreateCommand())
             {
                 cmd.CommandText = sql;
